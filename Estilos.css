@@ -1,0 +1,278 @@
+.registro {
+    background-color: white;
+    border: 2px solid #dcdcdc;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.15);
+    transition: 0.3s;
+    box-sizing: border-box; /* Evita que la caja crezca de forma inesperada al agregar espaciados o líneas divisorias */
+}
+
+.registro:hover { /* hover = efecto al pasar el mouse sobre algun elemento */
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0,0,0,0.18);
+}
+
+.registro p {
+    margin: 8px 0;
+    line-height: 1.5; /* Controla la altura de las líneas de texto */
+}
+
+.registro h3 {
+    color: #d4af37;
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 8px;
+}
+
+button {
+    background-color: black;
+    color: #d4af37;
+
+    border: none;
+    border-radius: 10px;
+
+    padding: 12px 20px;
+    margin: 10px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #333;
+}
+
+.btnEliminar {
+    background-color: #111;
+    color: #d4af37;
+
+    border: 1px solid #d4af37;
+    border-radius: 8px;
+
+    padding: 10px 18px;
+    margin: 10px 0 0;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btnEliminar:hover {
+    background-color: #d4af37;
+    color: #111;
+}
+
+#btnRegistrar {
+    background-color: #d4af37;
+    color: #111;
+}
+
+header { /* Todo el encabezado */
+    text-align: center;
+    padding: 30px 20px;
+    margin-bottom: 25px;
+
+    background-color: #111;
+    color: #d4af37;
+
+    border-bottom: 2px solid #d4af37;
+}
+
+header h1 { /* Busca los h1 dentro del header */
+    margin: 0;
+    font-size: 2.2rem;
+}
+
+header p { /* Busca los p dentro del header */
+    margin: 8px 0 0;
+    color: #ddd;
+    font-size: 1rem;
+}
+
+#seccionRegistros {
+    display: none; /* La sección existe, pero no la muestres */
+}
+ 
+#seccionRegistros { /* Evita que las tarjetas se extiendan demasiado */
+    max-width: 800px;
+    margin: auto;
+}
+
+#seccionRegistro {
+    max-width: 900px;
+    margin: 0 auto; /* Deja el mismo espacio a izquierda y derecha */
+    padding: 25px;
+
+    background-color: #f5f5f5;
+
+    border-radius: 12px;
+}
+
+#seccionRegistro > section { /* Busca los <section> dentro de #seccionRegistro */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    border-left: 4px solid #d4af37;
+    padding: 20px;
+    margin: 20px 0;
+    box-shadow: 0px 2px 6px rgba(0,0,0,0.10);
+}
+
+#seccionRegistro h2 {
+    margin-top: 0;
+    color: #222;
+
+    border-bottom: 1px solid #d4af37;
+    padding-bottom: 8px;
+}
+
+#seccionRegistros > label {
+    display: block;
+    font-weight: bold;
+    color: #222;
+
+    margin-top: 20px;
+    margin-bottom: 6px;
+}
+
+/*Como en el HTML ya hay inputs, hay que ser especifico para no convertir los radio buttons y checkboxes en enormes cajas blancas */
+
+#seccionRegistro input[type="text"], /* Busca los input de tipo texto que estén dentro de #seccionRegistro */
+#seccionRegistro input[type="tel"],
+#seccionRegistro input[type="email"],
+#seccionRegistro input[type="number"],
+#seccionRegistro select,
+#seccionRegistro textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+
+    border: 1px solid #bbb;
+    border-radius: 6px;
+
+    box-sizing: border-box;
+
+    font-size: 1rem;
+    background-color: #fafafa;
+}
+
+#seccionRegistro input:focus, /* Indica al usuario donde esta escribiendo */
+#seccionRegistro select:focus,
+#seccionRegistro textarea:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 5px rgba(212, 175, 55, 0.35);
+}
+
+#seccionRegistro input[type="radio"],
+#seccionRegistro input[type="checkbox"] {
+    margin-right: 5px;
+    accent-color: #d4af37; /* Permite cambiar el color de controles sin reconstruirlos */
+}
+
+#seccionRegistro input[type="radio"],
+#seccionRegistro input[type="checkbox"] {
+    accent-color: #d4af37;
+    cursor: pointer;
+}
+
+@media (max-width: 600px) { /* Si la pantalla es pequeña, modifica ligeramente las tarjetas */
+    #seccionRegistros {
+        width: 100%;
+        padding: 10px;
+        box-sizing: border-box;
+    }
+
+    .registro {
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .registro p {
+        font-size: 0.95rem;
+    }
+
+    .informacionPrincipal {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+}
+
+.acciones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+}
+
+.acciones button {
+    margin: 0;
+}
+
+#tituloFormulario {
+    margin-top: 20px;
+    font-size: 1.5rem;
+    color: #d4af37;
+    letter-spacing: 1px;
+}
+
+#buscadorRegistros {
+    width: 100%;
+    max-width: 600px;
+
+    padding: 14px 16px;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+
+    font-size: 1rem;
+    margin: 0 0 20px;
+    box-sizing: border-box;
+    background-color: white;
+    transition: 0.3s;
+}
+
+#buscadorRegistros:focus {
+    outline: none;
+    border-color: #d4af37;
+    box-shadow: 0 0 7px rgba(212,175,55,0.35);
+}
+
+.bloqueRegistro {
+    padding: 12px 0;
+    margin-bottom: 10px;
+
+    border-bottom: 1px solid #e0e0e0;
+    transition: 0.3s;
+}
+
+.bloqueRegistro h4 {
+    margin: 0 0 8px;
+
+    color: #222;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.bloqueRegistro p {
+    margin: 5px 0;
+    color: #555;
+    line-height: 1.5;
+}
+
+.bloqueRegistro:hover {
+    border-bottom-color: #d4af37;
+}
+
+.informacionPrincipal { /* Dentro de esta sección quiero dos columnas del mismo tamaño */
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 25px;
+}
