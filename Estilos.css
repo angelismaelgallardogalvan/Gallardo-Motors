@@ -245,25 +245,32 @@ header p { /* Busca los p dentro del header */
 }
 
 .bloqueRegistro {
-    padding: 12px 0;
-    margin-bottom: 10px;
+    padding: 18px;
+    margin-bottom: 15px;
 
-    border-bottom: 1px solid #e0e0e0;
+    background-color: #fafafa;
+
+    border: 1px solid #e5e5e5;
+    border-left: 4px solid #d4af37;
+    border-radius: 10px;
+
     transition: 0.3s;
+    box-sizing: border-box;
 }
 
 .bloqueRegistro h4 {
-    margin: 0 0 8px;
+    margin: 0 0 12px;
 
-    color: #222;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    color: #d4af37;
+    font-size: 0.95rem;
+
+    text-transform: uppercase; /* uppercase = transformar todas las letras en mayussculas */
+    letter-spacing: 1px;
 }
 
 .bloqueRegistro p {
-    margin: 5px 0;
-    color: #555;
+    margin: 7px 0;
+    color: #444;
     line-height: 1.5;
 }
 
@@ -353,10 +360,11 @@ header p { /* Busca los p dentro del header */
         display: inline-flex;
         margin-bottom: 10px;
     }
-    
+
     #seccionRegistro input[type="checkbox"] + label {
         width: calc(50% - 5px);
         display: inline-flex;
         margin-bottom: 10px;
+        text-align: center;
     }
 }
