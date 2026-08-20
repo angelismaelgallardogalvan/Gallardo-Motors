@@ -124,6 +124,8 @@ const seccionRegistros = document.getElementById("seccionRegistros");
 const listaRegistros = document.getElementById("listaRegistros");
 const buscadorRegistros = document.getElementById("buscadorRegistros");
 
+const mensajeValidacion = document.getElementById("mensajeValidacion");
+
 const tituloFormulario = document.getElementById("tituloFormulario");
 
 let modoEdicion = false; 
@@ -162,28 +164,30 @@ btnRegistrar.addEventListener("click", function () {
     const soloNumeros = /^[0-9]+$/;
 
     if (!soloLetras.test(nombre.value.trim())) { // .test = metodo que devuelve true si la cadena cumple con el formato o false si no
-        alert("El nombre solo debe contener letras.");
+        mostrarMensaje("El nombre solo acepta letras.");
         nombre.focus();
         return;
     }
 
     if (!soloNumeros.test(telefono.value.trim())) {
-        alert("El teléfono solo debe contener números.");
+        mostrarMensaje("El teléfono solo acepta números.");
         telefono.focus();
         return;
     }
 
     if (!soloLetras.test(color.value.trim())) {
-        alert("El color solo debe contener letras.");
+        mostrarMensaje("El color solo debe contener letras.");
         color.focus();
         return;
     }
     
     if (!soloNumeros.test(año.value.trim())) {
-        alert("El año solo debe contener números.");
+        mostrarMensaje("El año solo debe contener números.");
         año.focus();
         return;
     }
+
+    ocultarMensaje();
     
     const tipoVehiculo = document.querySelector('input[name="tipo"]:checked'); // querySelector, busca y obtiene el primer elemento marcado o seleccionado en ese momento
     const serviciosSeleccionados = document.querySelectorAll('input[type="checkbox"]:checked'); //querySelectorAll, busca y obtiene una lista de todos los elementos seleccionados de tipo casilla
@@ -341,12 +345,25 @@ function editarRegistro(indice) {
     console.log("Registro seleccionado:", registro);
 
     // El camino de regreso para mostrar los datos en el formulario
-    nombre.value = registro.cliente.nombre;
-    telefono.value = registro.cliente.telefono;
-    correo.value = registro.cliente.correo;
-
     marca.value = registro.vehiculo.marca;
+
+    // Generar los modelos correspondientes a la marca guardada
+    modelo.innerHTML = "";
+
+    const modelos = modelosPorMarca[marca.value];
+
+    if (modelos) {
+        modelos.forEach(function(nombreModelo) {
+            const opcion = document.createElement("option");
+            opcion.value = nombreModelo;
+            opcion.textContent = nombreModelo;
+            modelo.appendChild(opcion);
+        });
+    }
+
+    // Seleccionar el modelo que tenía guardado el registro
     modelo.value = registro.vehiculo.modelo;
+
     año.value = registro.vehiculo.año;
     color.value = registro.vehiculo.color;
     numeroSerie.value = registro.vehiculo.numeroSerie;
@@ -374,9 +391,19 @@ function limpiarFormulario() {
     nombre.value = "";
     telefono.value = "";
     correo.value = "";
-
     marca.value = "";
-    modelo.value = "";
+    
+    modelo.innerHTML = "";
+
+    const opcionInicial = document.createElement("option");
+    opcionInicial.value = "";
+    opcionInicial.textContent = "Selecciona un modelo";
+    opcionInicial.disabled = true;
+    opcionInicial.selected = true;
+    opcionInicial.hidden = true;
+
+    modelo.appendChild(opcionInicial);
+    
     año.value = "";
     color.value = "";
     numeroSerie.value = "";
@@ -398,6 +425,18 @@ function limpiarFormulario() {
     checkboxes.forEach(function(checkbox) {
         checkbox.checked = false;
     });
+
+    ocultarMensaje();
+}
+
+function mostrarMensaje(mensaje) {
+    mensajeValidacion.textContent = mensaje;
+    mensajeValidacion.style.display = "block";
+}
+
+function ocultarMensaje() {
+    mensajeValidacion.textContent = "";
+    mensajeValidacion.style.display = "none";
 }
 
 function eliminarRegistro(indice) {
