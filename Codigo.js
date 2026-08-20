@@ -345,6 +345,9 @@ function editarRegistro(indice) {
     console.log("Registro seleccionado:", registro);
 
     // El camino de regreso para mostrar los datos en el formulario
+    nombre.value = registro.cliente.nombre;
+    telefono.value = registro.cliente.telefono;
+    correo.value = registro.cliente.correo;
     marca.value = registro.vehiculo.marca;
 
     // Generar los modelos correspondientes a la marca guardada
