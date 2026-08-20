@@ -180,6 +180,45 @@ header p { /* Busca los p dentro del header */
     cursor: pointer;
 }
 
+#seccionRegistro input[type="radio"],
+#seccionRegistro input[type="checkbox"] {
+    margin: 0;
+    accent-color: #d4af37;
+    cursor: pointer;
+}
+
+#seccionRegistro input[type="radio"] + label,
+#seccionRegistro input[type="checkbox"] + label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 42px;
+    padding: 8px 14px;
+    margin: 5px;
+
+    border: 1px solid #ddd;
+    border-radius: 8px;
+
+    background-color: #fafafa;
+    color: #333;
+
+    font-weight: 500;
+    cursor: pointer;
+
+    transition: 0.3s;
+    box-sizing: border-box;
+}
+
+#seccionRegistro input[type="radio"]:checked + label,
+#seccionRegistro input[type="checkbox"]:checked + label {
+    border-color: #d4af37;
+    background-color: #fffdf5;
+    color: #111;
+
+    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.20);
+}
+
 @media (max-width: 600px) { /* Si la pantalla es pequeña, modifica ligeramente las tarjetas */
     #seccionRegistros {
         width: 100%;
