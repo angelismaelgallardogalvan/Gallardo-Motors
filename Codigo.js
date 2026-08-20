@@ -33,6 +33,33 @@ console.log("Índice de edición:", indiceEdicion);
 
 btnRegistrar.addEventListener("click", function () {
     console.log("Registro iniciado");
+
+    const soloLetras = /^[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+$/;
+    const soloNumeros = /^[0-9]+$/;
+
+    if (!soloLetras.test(nombre.value.trim())) { // .test = metodo que devuelve true si la cadena cumple con el formato o false si no
+        alert("El nombre solo debe contener letras.");
+        nombre.focus();
+        return;
+    }
+
+    if (!soloNumeros.test(telefono.value.trim())) {
+        alert("El teléfono solo debe contener números.");
+        telefono.focus();
+        return;
+    }
+
+    if (!soloLetras.test(color.value.trim())) {
+        alert("El color solo debe contener letras.");
+        color.focus();
+        return;
+    }
+    
+    if (!soloNumeros.test(año.value.trim())) {
+        alert("El año solo debe contener números.");
+        año.focus();
+        return;
+    }
     
     const tipoVehiculo = document.querySelector('input[name="tipo"]:checked'); // querySelector, busca y obtiene el primer elemento marcado o seleccionado en ese momento
     const serviciosSeleccionados = document.querySelectorAll('input[type="checkbox"]:checked'); //querySelectorAll, busca y obtiene una lista de todos los elementos seleccionados de tipo casilla
