@@ -8,6 +8,109 @@ const descripcion = document.getElementById("descripcion");
 
 const marca = document.getElementById("marca");
 const modelo = document.getElementById("modelo");
+
+const modelosPorMarca = {
+    "Toyota": [
+        "Corolla",
+        "Hilux"
+    ],
+
+    "Mercedes - Benz": [
+        "Clase C",
+        "Clase E"
+    ],
+
+    "BMW": [
+        "Serie 3",
+        "X5"
+    ],
+
+    "Volkswagen": [
+        "Golf",
+        "Jetta"
+    ], 
+
+    "Porsche": [
+        "911",
+        "Cayenne"
+    ], 
+
+    "Tesla": [
+        "Model 3", 
+        "Model Y"
+    ], 
+
+    "Honda": [
+        "Civic", 
+        "CR - V"
+    ], 
+
+    "Ford": [
+        "Mustang", 
+        "F - 150"
+    ], 
+
+    "Audi": [
+        "A4", 
+        "Q5"
+    ], 
+
+    "BYD": [
+        "Dolphin", 
+        "Seal"
+    ], 
+
+    "Ferrari": [
+        "488 GTB", 
+        "SF90 Stradale" 
+    ], 
+
+    "Chevrolet": [
+        "Silverado",
+        "Aveo"
+    ], 
+
+    "Volvo": [
+        "XC60", 
+        "XC90"
+    ], 
+
+    "Kia": [
+        "Sportage", 
+        "K3 Forte"
+    ], 
+
+    "Lexus": [
+        "RX", 
+        "ES"
+    ], 
+
+    "Nissan": [
+        "Versa", 
+        "Sentra"
+    ], 
+
+    "Renault": [
+        "Clio", 
+        "Duster"
+    ], 
+
+    "Jeep": [
+        "Wrangler",
+        "Grand Cherokee"
+    ], 
+
+    "Subaru": [
+        "Impreza", 
+        "Forester"
+    ], 
+
+    "Suzuki": [
+        "Swift", 
+        "Jimmy"
+    ]
+}
+
 const año = document.getElementById("año");
 const color = document.getElementById("color");
 const numeroSerie = document.getElementById("numeroSerie");
@@ -28,6 +131,27 @@ let indiceEdicion = null; // No tiene ningún registro seleccionado para editar,
 
 console.log("Modo edición:", modoEdicion);
 console.log("Índice de edición:", indiceEdicion);
+
+marca.addEventListener("change", function () {
+    modelo.innerHTML = "";
+
+    const opcionInicial = document.createElement("option");
+    opcionInicial.value = "";
+    opcionInicial.textContent = "Selecciona un modelo";
+
+    modelo.appendChild(opcionInicial); // appendChild = agrega un nuevo elemento hijo al final de un elemento padre dentro del HTML
+
+    const modelos = modelosPorMarca[marca.value];
+
+    if (modelos) {
+        modelos.forEach(function(nombreModelo) {
+            const opcion = document.createElement("option");
+            opcion.value = nombreModelo;
+            opcion.textContent = nombreModelo;
+            modelo.appendChild(opcion);
+        });
+    }
+});
 
 // Se obtiene el valor de tal campo en el momento de dar click
 
